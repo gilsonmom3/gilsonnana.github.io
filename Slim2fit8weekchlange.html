@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn About GBX Slim2Fit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --plum: #2D1040;
+      --plum-mid: #4A1E6E;
+      --teal: #00B4A0;
+      --teal-light: #3DCFC0;
+      --teal-pale: #E6F8F6;
+      --warm: #F7F3EE;
+      --warm-mid: #EDE6DC;
+      --cream: #FDFAF6;
+      --text: #1C0E2E;
+      --muted: #6B6075;
+      --gold: #C8943A;
+      --gold-pale: #FBF3E4;
+      --white: #FFFFFF;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, .serif { font-family: 'Lora', serif; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(253,250,246,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--warm-mid);
+      padding: 14px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: box-shadow 0.3s;
+    }
+    .nav.scrolled { box-shadow: 0 2px 20px rgba(45,16,64,0.1); }
+    .nav-logo { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--plum); letter-spacing: 0.02em; }
+    .nav-logo span { color: var(--teal); font-style: italic; }
+    .nav-cta {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--teal); background: transparent;
+      border: 1.5px solid var(--teal);
+      text-decoration: none; padding: 8px 18px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--teal); color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; background: var(--plum);
+      display: flex; align-items: center; justify-content: center;
+      padding: 110px 40px 80px;
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(0,180,160,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-grain {
+      position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+    .hero-inner { max-width: 720px; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--teal-light); border: 1px solid rgba(0,180,160,0.35); padding: 6px 18px; border-radius: 50px;
+      margin-bottom: 32px; animation: fadeUp 0.7s ease both;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 700; color: var(--white); line-height: 1.12; margin-bottom: 8px;
+      animation: fadeUp 0.7s ease 0.1s both;
+    }
+    .hero h1 em { color: var(--teal-light); font-style: italic; font-weight: 400; }
+    .hero-bridge {
+      font-family: 'Lora', serif; font-style: italic;
+      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+      color: rgba(255,255,255,0.55); margin-bottom: 32px;
+      animation: fadeUp 0.7s ease 0.18s both;
+    }
+    .hero-lead {
+      font-size: 1rem; color: rgba(255,255,255,0.78); line-height: 1.85;
+      max-width: 560px; margin: 0 auto 44px;
+      animation: fadeUp 0.7s ease 0.26s both;
+    }
+    .hero-lead strong { color: var(--teal-light); font-weight: 600; }
+    .hero-img {
+      width: 180px; display: block; margin: 0 auto 40px;
+      filter: drop-shadow(0 24px 56px rgba(0,0,0,0.45));
+      animation: fadeUp 0.7s ease 0.12s both, floatImg 5s ease-in-out 1s infinite;
+    }
+    @keyframes floatImg { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+    .hero-cta-group { animation: fadeUp 0.7s ease 0.34s both; }
+    .cta-prompt {
+      display: inline-block; background: var(--teal-pale); border: 1.5px solid var(--teal);
+      padding: 20px 32px; text-align: center; font-size: 0.92rem; color: var(--plum); line-height: 1.6;
+    }
+    .cta-prompt strong { display: block; font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--plum); margin-bottom: 4px; }
+    .cta-prompt span { font-size: 0.78rem; color: var(--muted); }
+    .cta-prompt-dark {
+      display: inline-block; background: rgba(0,180,160,0.1); border: 1.5px solid var(--teal);
+      padding: 20px 32px; text-align: center; font-size: 0.92rem; color: rgba(255,255,255,0.9); line-height: 1.6; position: relative; z-index: 1;
+    }
+    .cta-prompt-dark strong { display: block; font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+    .cta-prompt-dark span { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+    .btn-secondary { display: inline-block; color: rgba(255,255,255,0.6); font-size: 0.8rem; text-decoration: none; margin-top: 16px; transition: color 0.2s; }
+    .btn-secondary:hover { color: rgba(255,255,255,0.9); }
+    .hero-trust {
+      display: flex; align-items: center; justify-content: center;
+      gap: 24px; flex-wrap: wrap; margin-top: 20px;
+      font-size: 0.73rem; color: rgba(255,255,255,0.45); letter-spacing: 0.08em;
+    }
+    .hero-trust span::before { content: '· '; }
+    .hero-trust span:first-child::before { content: ''; }
+    .hero-scroll {
+      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); z-index: 1;
+    }
+    .hero-scroll-line { width: 1px; height: 32px; background: rgba(255,255,255,0.2); animation: scrollPulse 2s ease-in-out infinite; }
+    @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+    /* ── LAYOUT ── */
+    section { padding: 80px 40px; }
+    .container { max-width: 860px; margin: 0 auto; }
+    .container-wide { max-width: 1060px; margin: 0 auto; }
+    .eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); display: block; margin-bottom: 12px; }
+    .section-title { font-family: 'Lora', serif; font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--plum); line-height: 1.15; margin-bottom: 20px; }
+    .section-title em { font-style: italic; color: var(--teal); font-weight: 400; }
+    .section-lead { font-size: 1rem; color: var(--muted); line-height: 1.85; max-width: 600px; margin-bottom: 36px; }
+    .rule { width: 36px; height: 2px; background: var(--teal); margin-bottom: 24px; }
+    .rule-center { margin: 0 auto 24px; }
+
+    /* ── TICKER ── */
+    .ticker { background: var(--plum); padding: 12px 0; overflow: hidden; }
+    .ticker-track { display: flex; white-space: nowrap; animation: ticker 32s linear infinite; width: max-content; }
+    .ticker-item { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: rgba(255,255,255,0.6); padding: 0 28px; }
+    .ticker-item.accent { color: var(--teal-light); }
+    .ticker-item::after { content: '◆'; font-size: 0.32rem; margin-left: 28px; opacity: 0.4; }
+    @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ── STORY ── */
+    .story-section { background: var(--warm); }
+    .story-inner { max-width: 700px; margin: 0 auto; }
+    .story-text { font-size: 1.05rem; color: var(--text); line-height: 1.95; }
+    .story-text p { margin-bottom: 22px; }
+    .story-text strong { font-weight: 600; color: var(--plum); }
+    .story-text em { font-style: italic; }
+    .story-drop { font-family: 'Lora', serif; font-size: 4.5rem; font-weight: 700; color: var(--plum); float: left; line-height: 0.85; margin-right: 6px; margin-top: 6px; }
+    .story-pullquote { border-left: 3px solid var(--teal); padding: 18px 24px; background: var(--teal-pale); margin: 32px 0; font-family: 'Lora', serif; font-size: 1.15rem; font-style: italic; color: var(--plum); line-height: 1.7; }
+
+    /* ── PROBLEMS ── */
+    .problems-section { background: var(--cream); }
+    .problem-list { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+    .problem-item { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 28px 0; border-bottom: 1px solid var(--warm-mid); align-items: start; }
+    .problem-item:last-child { border-bottom: none; }
+    .problem-num { font-family: 'Lora', serif; font-size: 2.4rem; font-weight: 700; color: var(--warm-mid); line-height: 1; }
+    .problem-item h4 { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--plum); margin-bottom: 8px; }
+    .problem-item p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+
+    /* ── SOLUTION ── */
+    .solution-intro { background: var(--plum); text-align: center; }
+    .solution-intro .section-title { color: var(--white); max-width: 640px; margin: 0 auto 20px; }
+    .solution-intro .section-title em { color: var(--teal-light); }
+    .solution-intro .eyebrow { color: var(--teal-light); }
+    .solution-intro .section-lead { color: rgba(255,255,255,0.7); margin: 0 auto 48px; }
+    .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px; background: rgba(255,255,255,0.06); }
+    .solution-card { background: rgba(255,255,255,0.05); padding: 32px 28px; border-top: 2px solid transparent; transition: border-color 0.3s, background 0.3s; }
+    .solution-card:hover { border-top-color: var(--teal); background: rgba(255,255,255,0.08); }
+    .solution-card-icon { font-size: 1.4rem; margin-bottom: 14px; }
+    .solution-card h4 { font-family: 'Lora', serif; font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .solution-card p { font-size: 0.84rem; color: rgba(255,255,255,0.6); line-height: 1.75; }
+
+    /* ── SCIENCE ── */
+    .science-section { background: var(--warm); }
+    .science-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .science-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--warm-mid); margin-bottom: 24px; }
+    .science-stat { background: var(--warm); padding: 24px 20px; text-align: center; transition: background 0.2s; }
+    .science-stat:hover { background: var(--teal-pale); }
+    .science-stat-num { font-family: 'Lora', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 700; color: var(--teal); display: block; line-height: 1; margin-bottom: 6px; }
+    .science-stat-label { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--plum); line-height: 1.5; }
+    .science-note { font-size: 0.78rem; color: var(--muted); line-height: 1.7; font-style: italic; border-left: 2px solid rgba(0,180,160,0.3); padding-left: 14px; }
+    .science-right h3 { font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 600; color: var(--plum); margin-bottom: 16px; }
+    .science-right p { font-size: 0.9rem; color: var(--muted); line-height: 1.85; margin-bottom: 16px; }
+    .science-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--teal-pale); border: 1px solid rgba(0,180,160,0.25); color: var(--teal); font-size: 0.72rem; font-weight: 600; padding: 6px 14px; border-radius: 50px; margin-bottom: 20px; }
+    .studies-list { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+    .study-item { padding: 14px 18px; background: var(--cream); border-left: 3px solid var(--teal); }
+    .study-item-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--plum); margin-bottom: 4px; }
+    .study-item-text { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── INGREDIENTS ── */
+    .ingredient-section { background: var(--cream); }
+    .ingredient-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .ingredient-table thead tr { background: var(--plum); color: var(--white); }
+    .ingredient-table th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .ingredient-table td { padding: 14px 16px; border-bottom: 1px solid var(--warm-mid); color: var(--text); line-height: 1.6; }
+    .ingredient-table td small { display: block; color: var(--muted); font-size: 0.76rem; margin-top: 2px; }
+    .ingredient-table tr:nth-child(even) td { background: var(--warm); }
+    .ingredient-table tr:last-child td { border-bottom: none; }
+    .ingredient-table .amt { font-weight: 600; color: var(--plum); white-space: nowrap; }
+    .ingredient-table .pct { color: var(--muted); font-size: 0.8rem; }
+
+    /* ── OFFER ── */
+    .offer-section { background: var(--warm); }
+    .offer-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; margin-bottom: 48px; }
+    .offer-header-left { flex: 1; }
+    .offer-badge { flex-shrink: 0; width: 120px; height: 120px; border-radius: 50%; background: var(--plum); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 16px; }
+    .offer-badge-value { font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 700; color: var(--teal-light); line-height: 1; }
+    .offer-badge-label { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 4px; }
+    .offer-badge-sub { font-size: 0.56rem; color: rgba(255,255,255,0.35); margin-top: 2px; line-height: 1.4; }
+    .features-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; background: var(--warm-mid); }
+    .feature-card { background: var(--cream); padding: 28px 24px; border-top: 2px solid transparent; transition: border-color 0.3s; }
+    .feature-card:hover { border-top-color: var(--teal); }
+    .feature-icon { font-size: 1.5rem; margin-bottom: 14px; }
+    .feature-card h4 { font-family: 'Lora', serif; font-size: 1rem; font-weight: 600; color: var(--plum); margin-bottom: 8px; }
+    .feature-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.8; }
+
+    /* ── VALUE ── */
+    .value-section { background: var(--cream); }
+    .value-table { max-width: 580px; margin: 0 auto; border: 1px solid var(--warm-mid); overflow: hidden; }
+    .value-row { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; border-bottom: 1px solid var(--warm-mid); font-size: 0.9rem; }
+    .value-row:last-child { border-bottom: none; }
+    .value-row .item { color: var(--text); font-weight: 500; }
+    .value-row .price { color: var(--muted); font-weight: 600; text-decoration: line-through; }
+    .value-row.yours { background: var(--plum); }
+    .value-row.yours .item { color: var(--white); font-weight: 700; }
+    .value-row.yours .price { color: var(--teal-light); text-decoration: none; font-size: 1.05rem; }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--warm); }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-top: 40px; }
+    .step-num { width: 48px; height: 48px; background: linear-gradient(135deg, var(--teal), var(--plum-mid)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 16px; }
+    .step h4 { font-family: 'Lora', serif; font-size: 1.05rem; font-weight: 600; color: var(--plum); margin-bottom: 8px; }
+    .step p { font-size: 0.88rem; color: var(--muted); line-height: 1.8; }
+
+    /* ── GUARANTEE ── */
+    .guarantee-section { background: var(--plum); }
+    .guarantee-section .eyebrow { color: var(--teal-light); }
+    .guarantee-box { max-width: 640px; margin: 0 auto; background: rgba(255,255,255,0.05); border: 1px solid rgba(0,180,160,0.3); padding: 44px 48px; text-align: center; }
+    .guarantee-icon { font-size: 2.4rem; display: block; margin-bottom: 16px; }
+    .guarantee-box h3 { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 600; color: var(--white); margin-bottom: 16px; }
+    .guarantee-box p { font-size: 0.92rem; color: rgba(255,255,255,0.65); line-height: 1.85; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonial-name { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+    .testimonial-name.muted { color: var(--muted); }
+    .testimonial-stars { color: #E8A020; font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 8px; }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--cream); }
+    .faq-list { max-width: 680px; }
+    details { border-bottom: 1px solid var(--warm-mid); }
+    details:last-child { border-bottom: none; }
+    summary { font-weight: 600; font-size: 0.95rem; color: var(--plum); padding: 22px 0; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-family: 'Lora', serif; font-size: 1.4rem; color: var(--teal); font-weight: 400; transition: transform 0.3s; flex-shrink: 0; margin-left: 16px; }
+    details[open] summary::after { transform: rotate(45deg); }
+    .faq-answer { font-size: 0.9rem; color: var(--muted); line-height: 1.85; padding-bottom: 22px; }
+
+    /* ── FINAL CTA ── */
+    .final-cta { background: var(--plum); padding: 100px 40px; text-align: center; position: relative; overflow: hidden; }
+    .final-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(0,180,160,0.14) 0%, transparent 70%); pointer-events: none; }
+    .final-cta-box { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
+    .final-cta .eyebrow { color: var(--teal-light); }
+    .final-cta .section-title { color: var(--white); text-align: center; margin-bottom: 20px; }
+    .final-cta .section-title em { color: var(--teal-light); }
+    .final-cta p { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 32px; }
+    .final-trust { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; margin-top: 28px; }
+    .final-trust span { font-size: 0.72rem; color: rgba(255,255,255,0.5); }
+
+    /* ── ORDER BUTTON (shown when ?link= param present) ── */
+    .bp-order-btn {
+      display: inline-flex;
+      align-items: center; justify-content: center; gap: 10px;
+      background: var(--teal); color: var(--plum);
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; padding: 18px 44px; border-radius: 0;
+      margin-top: 20px;
+      box-shadow: 0 8px 32px rgba(0,180,160,0.4);
+      transition: all 0.25s;
+    }
+    .bp-order-btn:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,180,160,0.5); }
+    .bp-order-btn-dark {
+      display: inline-flex;
+      align-items: center; justify-content: center; gap: 10px;
+      background: var(--teal); color: var(--plum);
+      font-family: 'DM Sans', sans-serif; font-weight: 700;
+      font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; padding: 18px 44px; border-radius: 0;
+      margin-top: 20px;
+      box-shadow: 0 8px 32px rgba(0,180,160,0.4);
+      transition: all 0.25s;
+    }
+    .bp-order-btn-dark:hover { background: var(--teal-light); transform: translateY(-2px); }
+    footer { background: var(--plum); border-top: 1px solid rgba(255,255,255,0.07); padding: 40px 40px 32px; text-align: center; }
+    .footer-logo { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+    .footer-logo span { color: var(--teal-light); font-style: italic; }
+    footer p { font-size: 0.68rem; color: rgba(255,255,255,0.3); line-height: 1.8; max-width: 640px; margin: 0 auto; }
+    .footer-div { width: 28px; height: 1px; background: rgba(0,180,160,0.4); margin: 16px auto; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.07s; }
+    .reveal-d2 { transition-delay: 0.14s; }
+    .reveal-d3 { transition-delay: 0.21s; }
+    .reveal-d4 { transition-delay: 0.28s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      section { padding: 60px 24px; }
+      .nav { padding: 14px 24px; }
+      .hero { padding: 100px 24px 70px; }
+      .science-inner { grid-template-columns: 1fr; gap: 40px; }
+      .final-cta { padding: 72px 24px; }
+      .offer-header { flex-direction: column; }
+      .guarantee-box { padding: 36px 28px; }
+      .testimonials-masonry { columns: 1 !important; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) { .testimonials-masonry { columns: 2 !important; } }
+    @media (max-width: 520px) { .hero h1 { font-size: 2.2rem; } .science-stats { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo">GBX <span>Slim2Fit</span></div>
+  <a class="nav-cta" href="https://www.amare.com/2053854/en-us/GBX-Slim2Fit" target="_blank" style="background:var(--teal);color:var(--plum);padding:8px 18px;font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;">Order Slim2Fit™ →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Amare Global · 8-Week Transformation</span>
+    <img src="https://assets.cdn.filesafe.space/ZAf0zuAoRDWyYcqVCRqP/media/69ea8926b0e5e2bb7f37c0b1.png" alt="Amare GBX Slim2Fit" class="hero-img">
+    <h1>The food noise<br>wasn't <em>in your head.</em><br>It was in your gut.</h1>
+    <p class="hero-bridge">Here's what changes when your body finally gets the fullness signal it's been missing.</p>
+    <p class="hero-lead">GBX Slim2Fit™ is a next-generation weight wellness supplement powered by Slendesta® — a clinically studied potato extract that supports your body's own natural fullness hormone, CCK. Pair it with the <strong>free 8-week transformation guide</strong> included with your order, and you have something that works on your biology and your habits at the same time.</p>
+    <div class="hero-cta-group">
+      <div class="cta-prompt"><strong>Ready to get started?</strong>Get $10 off your first order as a new customer. Reply to the person who sent you this and simply say <em style="color:var(--teal);font-style:italic;font-weight:600;">"I'm ready."</em><span style="display:block;margin-top:6px;">They'll take care of everything from there.</span></div>
+      <div style="text-align:center;">
+        <a href="#" class="bp-order-btn" target="_blank">Order Slim2Fit™ — $75 first month →</a>
+      </div>
+      <br>
+      <a href="#story" class="btn-secondary">Keep reading to learn how it works ↓</a>
+      <div class="hero-trust">
+        <span>Slendesta® clinically studied</span>
+        <span>90-day money back guarantee</span>
+        <span>8-week guide included free ($97/month value)</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div></div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item accent">Slendesta® clinically studied</span>
+    <span class="ticker-item">Supports natural CCK release</span>
+    <span class="ticker-item accent">Quiets food noise</span>
+    <span class="ticker-item">8-week guide included free</span>
+    <span class="ticker-item accent">90-day money back guarantee</span>
+    <span class="ticker-item">No prescription required</span>
+    <span class="ticker-item accent">Plant-based · stimulant-free</span>
+    <span class="ticker-item">Gut-brain axis support</span>
+    <span class="ticker-item accent">Slendesta® clinically studied</span>
+    <span class="ticker-item">Supports natural CCK release</span>
+    <span class="ticker-item accent">Quiets food noise</span>
+    <span class="ticker-item">8-week guide included free</span>
+    <span class="ticker-item accent">90-day money back guarantee</span>
+    <span class="ticker-item">No prescription required</span>
+    <span class="ticker-item accent">Plant-based · stimulant-free</span>
+    <span class="ticker-item">Gut-brain axis support</span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story-section" id="story">
+  <div class="container">
+    <div class="story-inner">
+      <span class="eyebrow reveal">Sound familiar?</span>
+      <h2 class="section-title reveal">You tried harder.<br>Your body <em>didn't listen.</em></h2>
+      <div class="rule reveal"></div>
+
+      <div class="story-text reveal">
+        <p><span class="story-drop">Y</span>ou know the pattern. You start a Monday with every intention. The fridge is full of the right things. You've deleted the delivery apps. You mean it this time. And for a week or two, you do well. The cravings feel manageable. You feel in control.</p>
+
+        <p>Then somewhere around week three, the food noise comes back louder than ever. It's not hunger exactly — it's that constant low-level hum. The thoughts about what's in the pantry. The second-guessing at 4pm. The 9pm moment when you weren't even that hungry, but you ate anyway — and then spent the next hour feeling bad about it.</p>
+
+        <p>If that cycle feels familiar, it doesn't mean you're weak. It doesn't mean you have no willpower. It means your body's fullness signalling system hasn't been getting the support it needs — and no amount of discipline compensates for a biological signal that isn't firing properly.</p>
+
+        <div class="story-pullquote">
+          "Most people aren't failing at willpower. They're failing at a fullness signal their body stopped sending clearly years ago."
+        </div>
+
+        <p>Here's what's actually happening beneath the surface. Your gut produces a hormone called <strong>Cholecystokinin (CCK)</strong> — the body's natural "I'm full" signal. When fat and protein reach your small intestine, CCK is released. It tells your stomach to slow down, and sends a satisfaction message up to your brain via the gut-brain axis. When this signal is working well, you eat, you feel full, you stop. No drama.</p>
+
+        <p>But chronic stress, disrupted sleep, and dietary patterns can all interfere with how clearly that signal fires. The result is that you eat — but your brain never quite gets the memo. You're physically fed but neurologically still searching. <strong>That's the food noise. And it's not your fault.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREE PROBLEMS -->
+<section class="problems-section">
+  <div class="container">
+    <span class="eyebrow reveal">The three reasons it hasn't stuck</span>
+    <h2 class="section-title reveal">You've been solving <em>the wrong problems.</em></h2>
+    <div class="rule reveal"></div>
+
+    <div class="problem-list reveal">
+      <div class="problem-item">
+        <div class="problem-num">01</div>
+        <div>
+          <h4>Fighting biology with willpower</h4>
+          <p>Willpower is a finite resource — and using it to fight a misfiring fullness signal is like trying to run a car with no fuel by pressing the accelerator harder. You need the biological signal supported first. Then willpower can do what it's actually good at.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">02</div>
+        <div>
+          <h4>A plan that requires a perfect life</h4>
+          <p>Most weight loss programs are built for people with unlimited time, zero social obligations, and monk-like consistency. The moment real life interrupts — and it always does — the plan collapses because it had no flexibility designed in. You need a plan built around your real week, not an idealised one.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-num">03</div>
+        <div>
+          <h4>The restart that never restarts</h4>
+          <p>Falling off a program isn't the problem. Not knowing what to do next is. Most programs treat a slip as a failure and leave you there. Real transformation accounts for the slip — it tells you exactly how to get back on track at your next meal, not your next Monday.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CCK vs GLP-1 EDUCATION MOMENT -->
+<section style="background: var(--plum); padding: 80px 40px;">
+  <div class="container">
+    <div style="max-width: 700px; margin: 0 auto;">
+      <span class="eyebrow reveal" style="color: var(--teal-light);">Something nobody explained to you</span>
+      <h2 class="section-title reveal" style="color: var(--white);">You've heard about GLP-1s.<br><em>Meet your body's other fullness hormone.</em></h2>
+      <div class="rule reveal"></div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; background: rgba(255,255,255,0.06); margin-bottom: 36px;" class="reveal">
+        <div style="background: rgba(255,255,255,0.05); padding: 32px 28px; border-top: 2px solid rgba(255,255,255,0.15);">
+          <div style="font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 12px;">GLP-1 (pharmaceutical)</div>
+          <h4 style="font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 12px;">Synthetic. Injected. $1,000+/month.</h4>
+          <p style="font-size: 0.86rem; color: rgba(255,255,255,0.6); line-height: 1.8;">GLP-1 receptor agonists like semaglutide mimic a gut hormone to suppress appetite. They work — but they require a prescription, weekly injections, and significant ongoing cost. And the weight typically returns when the drug stops.</p>
+          <p style="font-size: 0.86rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-top: 12px;">Reported side effects include nausea, vomiting, fatigue and muscle loss — because your body isn't producing the signal itself, it's receiving a synthetic override.</p>
+        </div>
+        <div style="background: rgba(0,180,160,0.1); padding: 32px 28px; border-top: 2px solid var(--teal);">
+          <div style="font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 12px;">CCK — your natural signal*</div>
+          <h4 style="font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 12px;">Natural. Already in you. Just needs support.</h4>
+          <p style="font-size: 0.86rem; color: rgba(255,255,255,0.6); line-height: 1.8;">Cholecystokinin (CCK) is your gut's original fullness hormone — studied for over 50 years. It signals both your stomach and your brain that you've had enough. When it fires properly, you just... stop eating naturally.</p>
+          <p style="font-size: 0.86rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-top: 12px;">Research confirms CCK and GLP-1 work through comparable pathways on appetite and energy intake.* Slim2Fit supports the one that's already yours.</p>
+        </div>
+      </div>
+
+      <div style="background: rgba(0,180,160,0.12); border: 1px solid rgba(0,180,160,0.3); padding: 28px 32px; margin-bottom: 28px;" class="reveal">
+        <p style="font-family: 'Lora', serif; font-size: 1.1rem; font-style: italic; color: var(--white); line-height: 1.75; margin-bottom: 0;">This is where Slendesta® comes in. The clinically studied potato protein extract inside GBX Slim2Fit™ promotes and extends your body's own natural CCK release — so the fullness signal your gut has been trying to send actually gets through. No prescription. No injection. No synthetic override. <em>Just your biology, supported.</em>*</p>
+      </div>
+
+      <p style="font-size: 0.92rem; color: rgba(255,255,255,0.65); line-height: 1.85;" class="reveal">And because Amare formulates everything around the gut-brain connection, Slim2Fit also includes Capsifen® for natural thermogenesis support, chromium picolinate for glucose metabolism, and a prebiotic gut blend — green banana, black chia seed and FOS — that nurtures the microbiome, which science increasingly connects to how we regulate mood, motivation and metabolic function. This is a full-circle approach, not a single-pathway shortcut.*</p>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM INTRO -->
+<section style="background: var(--cream); padding: 80px 40px;">
+  <div class="container">
+    <div style="max-width: 700px; margin: 0 auto;">
+      <span class="eyebrow reveal">What comes with your order</span>
+      <h2 class="section-title reveal">Introducing the free<br><em>8-Week Transformation Program.</em></h2>
+      <div class="rule reveal"></div>
+      <p style="font-size: 1rem; color: var(--muted); line-height: 1.85; margin-bottom: 32px;" class="reveal">When you order GBX Slim2Fit™, you don't just get a supplement. You get a complete, self-guided 8-week program — built to run alongside it. Nutrition, movement, mindset and measurements, all in one place. Valued at $97/month. Yours free.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; background: var(--warm-mid);" class="reveal">
+        <div style="background: var(--white); padding: 24px 20px; text-align: center;">
+          <div style="font-size: 1.8rem; margin-bottom: 10px;">🧮</div>
+          <h4 style="font-family: 'Lora', serif; font-size: 0.95rem; font-weight: 600; color: var(--plum); margin-bottom: 6px;">Macro Calculator</h4>
+          <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.6;">Your exact calorie and protein targets, calculated for your body and your goal.</p>
+        </div>
+        <div style="background: var(--white); padding: 24px 20px; text-align: center;">
+          <div style="font-size: 1.8rem; margin-bottom: 10px;">🍽️</div>
+          <h4 style="font-family: 'Lora', serif; font-size: 0.95rem; font-weight: 600; color: var(--plum); margin-bottom: 6px;">Meal Planner</h4>
+          <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.6;">A full week of personalised meals with quantities, macros and recipe links. Regenerate any time.</p>
+        </div>
+        <div style="background: var(--white); padding: 24px 20px; text-align: center;">
+          <div style="font-size: 1.8rem; margin-bottom: 10px;">💪</div>
+          <h4 style="font-family: 'Lora', serif; font-size: 0.95rem; font-weight: 600; color: var(--plum); margin-bottom: 6px;">Movement Program</h4>
+          <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.6;">Three fitness levels, multiple workout tracks. Walking, Peloton or YouTube — no gym required.</p>
+        </div>
+        <div style="background: var(--white); padding: 24px 20px; text-align: center;">
+          <div style="font-size: 1.8rem; margin-bottom: 10px;">🧠</div>
+          <h4 style="font-family: 'Lora', serif; font-size: 0.95rem; font-weight: 600; color: var(--plum); margin-bottom: 6px;">Mindset Coaching</h4>
+          <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.6;">Built into every phase — including what to do when it falls apart, because it will.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 24px; padding: 20px 28px; background: var(--plum); display: flex; align-items: center; gap: 16px;" class="reveal">
+        <div style="font-size: 1.6rem; flex-shrink: 0;">🎁</div>
+        <p style="font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.7; margin: 0;">The complete program is <strong style="color: var(--teal-light);">free when you order Slim2Fit™</strong> — valued at $97/month. Your brand partner sends you the link the moment your order is placed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONEST TRUTH -->
+<section style="background: var(--warm); padding: 80px 40px;">
+  <div class="container">
+    <div style="max-width: 700px; margin: 0 auto;">
+      <span class="eyebrow reveal">Something most supplement brands won't tell you</span>
+      <h2 class="section-title reveal">A supplement alone<br><em>won't change your life.</em></h2>
+      <div class="rule reveal"></div>
+
+      <div class="story-text reveal">
+        <p>We're going to be honest with you — because we think you deserve that more than you deserve a sales pitch.</p>
+
+        <p>GBX Slim2Fit™ is genuinely impressive. The clinical evidence behind Slendesta® is real. The satiety support is real. The way it quiets food noise and helps your body regulate hunger is real. <strong>It will give you an incredible boost.</strong></p>
+
+        <p>But if you think a supplement alone is going to solve everything? The reality is, it won't. And we're not going to pretend otherwise to make a sale.</p>
+
+        <div class="story-pullquote">
+          "A supplement can change how you feel. Only habits change who you are."
+        </div>
+
+        <p>Here's the question nobody asks about GLP-1 drugs — and it applies to every supplement too: <strong>what happens when you stop?</strong> If you get results, feel great, and then go back to living exactly the way you were before... the weight comes back. Every time. That's not a failure of the product. That's the absence of the habits that should have been built alongside it.</p>
+
+        <p>This is the problem with short-term fixes. GLP-1 drugs are the most extreme version of it — people lose significant weight, stop injecting, and the weight returns because nothing changed underneath. The biology was overridden. The habits were never built. The relationship with food was never addressed.</p>
+
+        <p>We don't want that for you. <strong>We're not here to take your money and move on.</strong> We want you to finish 8 weeks with something worth more than the results you can see in the mirror — we want you to finish with a way of eating, moving and thinking about your body that you carry for the rest of your life.</p>
+
+        <p>That's why the 8-week program exists. Not as a marketing add-on. As the thing that makes the supplement actually mean something long-term. Slim2Fit does the biological work — quieting the noise, supporting your fullness signals, helping your body work with you. The guide builds the infrastructure around it. <em>Both matter. Together, they stick.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-intro">
+  <div class="container">
+    <span class="eyebrow reveal">The combination that changes everything</span>
+    <h2 class="section-title reveal">GBX Slim2Fit amplifies<br><em>what the program builds.</em></h2>
+    <div class="rule rule-center reveal"></div>
+    <p class="section-lead reveal" style="margin:0 auto 48px; text-align:center;">Think of it this way: the 8-week guide gives your habits the right foundation. GBX Slim2Fit gives your biology the right environment. Together, they address both sides of the equation that every other approach ignores one of.</p>
+    <div class="solution-grid reveal">
+      <div class="solution-card">
+        <div class="solution-card-icon">🔔</div>
+        <h4>CCK satiety support</h4>
+        <p>Slendesta® promotes and extends your body's own CCK release — the gut's natural "I'm full" signal — so hunger and portions start to regulate themselves.*</p>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card-icon">🔥</div>
+        <h4>Natural thermogenesis</h4>
+        <p>Capsifen® supports your body's natural heat production and energy expenditure — stomach-friendly and stimulant-free, unlike standard capsaicin extracts.*</p>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card-icon">🧬</div>
+        <h4>Gut-brain axis</h4>
+        <p>Green banana, chia seed, FOS and ginger nurture the microbiome — because cravings, mood, and motivation aren't just willpower problems. They're biological ones.*</p>
+      </div>
+      <div class="solution-card">
+        <div class="solution-card-icon">📋</div>
+        <h4>A plan built for real life</h4>
+        <p>The 8-week guide gives you a macro calculator, done-for-you meal plans, three workout tracks — and exactly what to do when it falls apart, because it will.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SCIENCE -->
+<section class="science-section">
+  <div class="container-wide">
+    <div class="science-inner">
+      <div class="science-left">
+        <span class="eyebrow reveal">The Slendesta® clinical evidence</span>
+        <h2 class="section-title reveal">The science behind<br>the <em>satiety.</em></h2>
+        <div class="rule reveal"></div>
+        <p class="reveal" style="font-size:0.92rem;color:var(--muted);line-height:1.85;margin-bottom:28px;">GBX Slim2Fit™ is powered by Slendesta® — a patented, natural potato protein extract with over 16 published human trials. Randomised, double-blind, placebo-controlled studies. Clinically demonstrated to support satiety and healthy post-meal glucose levels.*</p>
+        <div class="science-stats reveal">
+          <div class="science-stat">
+            <span class="science-stat-num">16+</span>
+            <span class="science-stat-label">Published human<br>trials on Slendesta®</span>
+          </div>
+          <div class="science-stat">
+            <span class="science-stat-num">28%</span>
+            <span class="science-stat-label">Reduction in post-meal<br>blood glucose AUC*</span>
+          </div>
+          <div class="science-stat">
+            <span class="science-stat-num">15+</span>
+            <span class="science-stat-label">Years of global use<br>no reported adverse effects</span>
+          </div>
+          <div class="science-stat">
+            <span class="science-stat-num">✓</span>
+            <span class="science-stat-label">GRAS affirmed · Non-GMO<br>Vegan &amp; vegetarian suitable</span>
+          </div>
+        </div>
+        <p class="science-note reveal">In a randomised double-blind, placebo-controlled clinical study, Slendesta® significantly reduced subjective hunger and desire to eat in a dose-dependent manner, elevated post-meal CCK levels, and reduced post-meal blood glucose by 28%. Results consistent across normal-weight and overweight subjects.*</p>
+      </div>
+
+      <div class="science-right">
+        <div class="science-badge reveal">📚 Published clinical research</div>
+        <h3 class="reveal">What the 28% glucose finding actually means</h3>
+        <p class="reveal">The post-meal blood glucose reduction isn't just a metabolic data point — it's directly connected to the food noise cycle. When blood glucose spikes after a meal and then crashes, your body interprets that crash as an emergency and sends hunger and craving signals to compensate. A more stable post-meal glucose curve means fewer of those crashes — and fewer of the cravings that follow.*</p>
+        <p class="reveal">The study also found elevated CCK levels at both 60 and 120 minutes post-meal — meaning the fullness signal wasn't just triggered, it was extended. That's the difference between feeling full for 20 minutes and feeling genuinely satisfied for hours.*</p>
+        <div class="studies-list reveal">
+          <div class="study-item">
+            <div class="study-item-label">Iowa State University · Randomised double-blind placebo-controlled</div>
+            <div class="study-item-text">44 healthy women · Significant dose-dependent reductions in hunger and desire to eat · Elevated CCK levels at 60 and 120 minutes post-meal · 28% reduction in post-meal blood glucose AUC*</div>
+          </div>
+          <div class="study-item">
+            <div class="study-item-label">Weight reduction study · Kemin Health</div>
+            <div class="study-item-text">Randomised, double-blind, placebo-controlled · Safe and effective for weight reduction · Improved body measurements sustained over study period*</div>
+          </div>
+          <div class="study-item">
+            <div class="study-item-label">Blood glucose study · JANA 2003</div>
+            <div class="study-item-text">Proteinase inhibitor extract from potatoes reduces post-prandial blood glucose in human subjects — consistent with CCK-mediated gastric emptying effects*</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INGREDIENT TABLE -->
+<section class="ingredient-section">
+  <div class="container">
+    <span class="eyebrow reveal">Full transparency</span>
+    <h2 class="section-title reveal">Every ingredient. <em>Exactly what's in each capsule.</em></h2>
+    <div class="rule reveal"></div>
+    <p class="section-lead reveal">Serving size: 1 capsule · 60 servings per container · Take one capsule twice daily with 8oz water, 30 minutes before your two largest meals.</p>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="ingredient-table">
+        <thead>
+          <tr><th>Ingredient</th><th>Per serving</th><th>%DV</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Vitamin B6</strong> (as pyridoxine HCl)</td>
+            <td class="amt">12.5 mg</td><td class="pct">735%</td>
+          </tr>
+          <tr>
+            <td><strong>Chromium</strong> (as chromium picolinate)</td>
+            <td class="amt">100 mcg</td><td class="pct">286%</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Prebiotic Satiety Blend</strong>
+              <small>Slendesta® Potato Extract (Solanum tuberosum) (Proteinase Inhibitor II (PI2) (Tubers)), Fructooligosaccharides (FOS), Green Banana Fruit (Musa acuminata), Black Chia Seed (Salvia hispanica L.)</small>
+            </td>
+            <td class="amt">227.5 mg</td><td class="pct">†</td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Thermogenic Spice Blend</strong>
+              <small>Red Chili Pepper Complex (Capsicum annuum L.) [Fruit] and Trigonella foenum-graecum [Seed], standardized to 2% Total Capsaicinoids [2mg] (Capsifen®), Ginger Root Extract (Zingiber officinale)</small>
+            </td>
+            <td class="amt">125 mg</td><td class="pct">†</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.75rem;color:var(--muted);margin-top:14px;line-height:1.7;">* Percent Daily Value based on a 2,000 calorie diet. † Daily Value not established. Other Ingredients: Microcrystalline Cellulose, Hydroxypropyl Methylcellulose (vegetable capsule), Sunflower Lecithin, Cellulose Powder, Magnesium Stearate (vegetable), Silica.</p>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="offer-section" id="offer">
+  <div class="container-wide">
+    <div class="offer-header">
+      <div class="offer-header-left">
+        <span class="eyebrow reveal">Your free bonus (value $97/month)</span>
+        <h2 class="section-title reveal">The 8-week transformation guide:<br><em>everything that's inside.</em></h2>
+        <div class="rule reveal"></div>
+        <p class="section-lead reveal">This isn't a PDF with a food list. It's a fully personalised program built for real people with real lives — including what to do when it falls apart, which it will, because it always does.</p>
+      </div>
+      <div class="offer-badge reveal">
+        <span class="offer-badge-value">$97<span style="font-size:0.9rem;">/mo</span></span>
+        <span class="offer-badge-label">Guide value</span>
+        <span class="offer-badge-sub">Free with Slim2Fit purchase</span>
+      </div>
+    </div>
+
+    <div class="features-list">
+      <div class="feature-card reveal reveal-d1">
+        <div class="feature-icon">🧮</div>
+        <h4>Personalised macro calculator</h4>
+        <p>Enter your details — your body, your goal, your timeline — and get your exact daily calorie and macro targets. Not a generic plan. Yours.</p>
+      </div>
+      <div class="feature-card reveal reveal-d2">
+        <div class="feature-icon">🍽️</div>
+        <h4>Custom meal planner</h4>
+        <p>Generate a personalised day of eating with exact quantities, macros, and recipe links. Regenerate any time for variety. The cookie can stay.</p>
+      </div>
+      <div class="feature-card reveal reveal-d3">
+        <div class="feature-icon">💪</div>
+        <h4>3-level movement program</h4>
+        <p>Beginner, Intermediate, or Advanced — including walking, Peloton, and YouTube-only tracks. No gym required. Every session links directly to the exact video.</p>
+      </div>
+      <div class="feature-card reveal reveal-d1">
+        <div class="feature-icon">📊</div>
+        <h4>Body measurement tracker</h4>
+        <p>Track across 10 body points weekly. The scale is one data point. These 10 tell the real story — especially in the weeks the scale doesn't move.</p>
+      </div>
+      <div class="feature-card reveal reveal-d2">
+        <div class="feature-icon">✅</div>
+        <h4>8-week progress checklist</h4>
+        <p>Week-by-week milestones from before photos to completion. Designed so you can see exactly how far you've come even when you can't feel it yet.</p>
+      </div>
+      <div class="feature-card reveal reveal-d3">
+        <div class="feature-icon">🧠</div>
+        <h4>Mindset coaching built in</h4>
+        <p>Every phase includes honest coaching on what to expect mentally — cravings, plateaus, the post-week-three slump. And exactly what to do about each one.</p>
+      </div>
+      <div class="feature-card reveal reveal-d1">
+        <div class="feature-icon">👥</div>
+        <h4>Private accountability group</h4>
+        <p>Weekly live trainings, weekly prizes, and a community going through the same 8 weeks at the same time. Your brand partner will send you the access link.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="max-width: 700px; margin: 48px auto 0; background: var(--cream); border-left: 3px solid var(--teal); padding: 28px 32px;">
+      <h4 style="font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--plum); margin-bottom: 12px;">One more thing worth saying clearly.</h4>
+      <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.85; margin-bottom: 14px;">The 8-week program isn't something you do forever. It's the education and the tools to get your habits and your biology set up properly — so that by the time you finish, the structure becomes second nature. You built the habits. You learned the framework. The program did its job.</p>
+      <p style="font-size: 0.92rem; color: var(--muted); line-height: 1.85;">What most people do after the 8 weeks is simple: they keep taking GBX Slim2Fit™ as part of their daily routine — the biological support without the structured program, because they no longer need it. The guide builds the foundation. Slim2Fit keeps supporting the biology that holds it up.*</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section style="background: var(--cream); padding: 80px 40px;">
+  <div class="container-wide">
+    <span class="eyebrow reveal" style="text-align:center; display:block;">What people are already saying</span>
+    <h2 class="section-title reveal" style="text-align:center;">Real words. <em>Real people.</em></h2>
+    <div class="rule rule-center reveal"></div>
+    <p class="section-lead reveal" style="text-align:center; margin: 0 auto 48px;">These aren't polished reviews — they're the kind of things you say when something genuinely surprises you.</p>
+
+    <div style="columns: 3; column-gap: 20px; max-width: 1060px; margin: 0 auto;" class="reveal testimonials-masonry">
+
+      <div style="break-inside: avoid; margin-bottom: 20px; background: var(--teal-pale); border-radius: 16px; padding: 24px 22px; border: 1px solid rgba(0,180,160,0.2); box-shadow: 0 2px 12px rgba(45,16,64,0.06);">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-name">EV — Verified Customer</p>
+        <p style="font-size: 0.92rem; color: var(--text); line-height: 1.75;">"Wow! Finally a product that helps me with my food noise! I've tried EVERYTHING to lose weight and shut off the food noise. Slim2Fit has helped me control my portions and lose the weight I was so desperate to shed. Slim2Fit has changed my life!"</p>
+      </div>
+
+      <div style="break-inside: avoid; margin-bottom: 20px; background: var(--white); border-radius: 16px; padding: 24px 22px; border: 1px solid var(--warm-mid); box-shadow: 0 2px 12px rgba(45,16,64,0.06);">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-name muted">BM — Verified Customer</p>
+        <p style="font-size: 0.92rem; color: var(--text); line-height: 1.75;">"I've been so impressed! It fits seamlessly into my busy schedule and helped me finally break through a plateau I was stuck in for 2 years. I've lost 10 pounds in 8 weeks, dropped 2 inches from my waist and hips and even an inch off my neck. I'm finally confident I can hit my ideal weight even though perimenopause was suggesting otherwise."</p>
+      </div>
+
+      <div style="break-inside: avoid; margin-bottom: 20px; background: var(--teal-pale); border-radius: 16px; padding: 24px 22px; border: 1px solid rgba(0,180,160,0.2); box-shadow: 0 2px 12px rgba(45,16,64,0.06);">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-name">SH — Verified Customer</p>
+        <p style="font-size: 0.92rem; color: var(--text); line-height: 1.75;">"This product is INCREDIBLE! I've been using it for 2 months and it honestly works better the longer I use it! The feeling of 'FULL' is for real! My only downfall is I have to go shopping for new clothes because my pants are TOO LOOSE!"</p>
+      </div>
+
+      <div style="break-inside: avoid; margin-bottom: 20px; background: var(--white); border-radius: 16px; padding: 24px 22px; border: 1px solid var(--warm-mid); box-shadow: 0 2px 12px rgba(45,16,64,0.06);">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-name muted">MR — Verified Customer, Amery, US</p>
+        <p style="font-size: 0.92rem; color: var(--text); line-height: 1.75;">"I've battled weight since childhood. I've tried everything with little to no success. Slim2Fit is life changing and the best part — it's not restricting. I eat what I want, just less of it. Simple, highly effective, and reasonably priced."</p>
+      </div>
+
+      <div style="break-inside: avoid; margin-bottom: 20px; background: var(--teal-pale); border-radius: 16px; padding: 24px 22px; border: 1px solid rgba(0,180,160,0.2); box-shadow: 0 2px 12px rgba(45,16,64,0.06);">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-name">M — Verified Customer</p>
+        <p style="font-size: 0.92rem; color: var(--text); line-height: 1.75;">"As someone who has struggled with overeating all my life, this has been huge. Food cravings gone. I no longer feel like I have to eat a late-night snack during movie nights. The scale hasn't moved a lot but the inches have MELTED off."</p>
+      </div>
+
+      <div style="break-inside: avoid; margin-bottom: 20px; background: var(--white); border-radius: 16px; padding: 24px 22px; border: 1px solid var(--warm-mid); box-shadow: 0 2px 12px rgba(45,16,64,0.06);">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-name muted">SS — Verified Customer</p>
+        <p style="font-size: 0.92rem; color: var(--text); line-height: 1.75;">"Weight has been an issue since I began going through perimenopause. In January, I began taking Slim2Fit before my two biggest meals and things began to shift. I've lost 8lbs, 5 inches, and my clothes are finally fitting better."</p>
+      </div>
+
+      <div style="break-inside: avoid; margin-bottom: 20px; background: var(--teal-pale); border-radius: 16px; padding: 24px 22px; border: 1px solid rgba(0,180,160,0.2); box-shadow: 0 2px 12px rgba(45,16,64,0.06);">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-name">MK — Verified Customer</p>
+        <p style="font-size: 0.92rem; color: var(--text); line-height: 1.75;">"Weight has been a struggle due to medical treatment medications. With this product, I've experienced weight loss of almost 15lbs over 10 weeks, which is HUGE for me. I tend to be a snacker and these cravings have disappeared!"</p>
+      </div>
+
+      <div style="break-inside: avoid; margin-bottom: 20px; background: var(--white); border-radius: 16px; padding: 24px 22px; border: 1px solid var(--warm-mid); box-shadow: 0 2px 12px rgba(45,16,64,0.06);">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-name muted">RB — Verified Customer</p>
+        <p style="font-size: 0.92rem; color: var(--text); line-height: 1.75;">"I had never really thought about 'food noise' until I started taking GBX Slim2Fit. What a difference! I am literally not thinking about food like I used to. The weight has come off and the inches have followed. 10 out of 5 stars for sure!"</p>
+      </div>
+
+      <div style="break-inside: avoid; margin-bottom: 20px; background: var(--teal-pale); border-radius: 16px; padding: 24px 22px; border: 1px solid rgba(0,180,160,0.2); box-shadow: 0 2px 12px rgba(45,16,64,0.06);">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-name">K — Verified Customer</p>
+        <p style="font-size: 0.92rem; color: var(--text); line-height: 1.75;">"I have lost eight pounds so far. I feel full faster and am not craving snacks at night."</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="value-section">
+  <div class="container">
+    <span class="eyebrow reveal" style="text-align:center;display:block;">The numbers, honestly</span>
+    <h2 class="section-title reveal" style="text-align:center;">Less than the cost of a week<br>of <em>takeout coffee.</em></h2>
+    <div class="rule rule-center reveal"></div>
+    <p class="section-lead reveal" style="text-align:center;margin:0 auto 40px;">GBX Slim2Fit™ is $85 a month — and your first order comes in at $75 with the Amare new customer discount. That's under $3 a day for a supplement, a $97/month program, and a community. Compare that to GLP-1 injections at $1,000+ a month. Or a personal trainer. Or another program you'll abandon by week three.</p>
+
+    <!-- Pricing card -->
+    <div class="reveal" style="max-width:580px;margin:0 auto 32px;border:2px solid var(--teal);overflow:hidden;">
+
+      <!-- First month highlight -->
+      <div style="background:var(--plum);padding:32px 36px;text-align:center;">
+        <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal-light);margin-bottom:12px;">Your first month</div>
+        <div style="display:flex;align-items:baseline;justify-content:center;gap:12px;margin-bottom:8px;">
+          <span style="font-family:'Lora',serif;font-size:3.8rem;font-weight:700;color:var(--white);line-height:1;">$75</span>
+          <div style="text-align:left;">
+            <div style="font-size:1rem;color:rgba(255,255,255,0.4);text-decoration:line-through;">$85</div>
+            <div style="font-size:0.72rem;color:var(--teal-light);font-weight:600;">Save $10</div>
+          </div>
+        </div>
+        <div style="font-size:0.8rem;color:rgba(255,255,255,0.55);">$85/month from month two · Cancel any time</div>
+      </div>
+
+      <!-- What's included -->
+      <div style="background:var(--cream);padding:24px 36px;display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;color:var(--text);">
+          <span style="color:var(--teal);font-weight:700;font-size:1rem;">✓</span>
+          <span>GBX Slim2Fit™ (60 capsules — a full month's supply)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;color:var(--text);">
+          <span style="color:var(--teal);font-weight:700;font-size:1rem;">✓</span>
+          <span>8-week transformation guide <span style="color:var(--teal);font-weight:600;">($97/month value — free)</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;color:var(--text);">
+          <span style="color:var(--teal);font-weight:700;font-size:1rem;">✓</span>
+          <span>Private Facebook accountability group access <span style="color:var(--teal);font-weight:600;">($37/month value — free)</span></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.88rem;color:var(--text);">
+          <span style="color:var(--teal);font-weight:700;font-size:1rem;">✓</span>
+          <span>90-day money back guarantee — no questions asked</span>
+        </div>
+      </div>
+
+      <!-- Brand partner note -->
+      <div style="background:var(--teal-pale);border-top:1px solid rgba(0,180,160,0.2);padding:16px 36px;text-align:center;">
+        <p style="font-size:0.78rem;color:var(--plum);line-height:1.6;">New customers get <strong>$10 off their first order</strong>. The person who sent you this page is your brand partner — just reach out and say you're ready.</p>
+      </div>
+    </div>
+
+    <!-- Value comparison -->
+    <div class="value-table reveal">
+      <div class="value-row"><span class="item">🎁 8-week transformation guide</span><span class="price">$97/month value</span></div>
+      <div class="value-row"><span class="item">👥 Private Facebook accountability group</span><span class="price">$37/month value</span></div>
+      <div class="value-row"><span class="item">💊 GBX Slim2Fit™<br><span style="font-size:0.76rem;font-weight:400;color:var(--muted);">$75 for new customers · $85 for existing customers</span></span><span class="price" style="text-decoration:line-through;">$85</span></div>
+      <div class="value-row" style="background:var(--warm);border-top:1px solid var(--warm-mid);"><span class="item" style="color:var(--muted);font-size:0.82rem;">Total monthly value</span><span class="price" style="text-decoration:line-through;font-size:1rem;color:var(--plum);">$219</span></div>
+      <div class="value-row yours"><span class="item">Everything · your first month</span><span class="price" style="text-decoration:none;">$75</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="container">
+    <span class="eyebrow reveal">Three steps</span>
+    <h2 class="section-title reveal">Here's exactly <em>how to get started.</em></h2>
+    <div class="rule reveal"></div>
+    <div class="steps">
+      <div class="step reveal reveal-d1">
+        <div class="step-num">1</div>
+        <h4>Order GBX Slim2Fit™</h4>
+        <p>Reach out to the person who sent you this page. They'll walk you through ordering Slim2Fit™ and getting your account set up.</p>
+      </div>
+      <div class="step reveal reveal-d2">
+        <div class="step-num">2</div>
+        <h4>Receive your free guide + group access</h4>
+        <p>Your brand partner will personally send you the 8-week transformation guide link and your invitation to the private Facebook accountability group.</p>
+      </div>
+      <div class="step reveal reveal-d3">
+        <div class="step-num">3</div>
+        <h4>Start your 8 weeks</h4>
+        <p>Read the guide from start to finish, calculate your numbers, choose your workout track, and begin. Day one starts the moment you have it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee-section">
+  <div class="container" style="text-align:center;">
+    <span class="eyebrow reveal" style="color:var(--teal-light);">Zero risk</span>
+    <div class="guarantee-box reveal">
+      <span class="guarantee-icon">🛡️</span>
+      <h3>90-day money back guarantee</h3>
+      <p>Amare Global stands behind every product with a full 90-day money back guarantee. That means you can complete the entire 8-week program and still have nearly a month to decide how you feel. If you're not completely satisfied, contact Amare within 90 days for a full refund. No complicated process. No questions designed to make you give up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <span class="eyebrow reveal">Your questions, honestly answered</span>
+    <h2 class="section-title reveal">Things worth <em>knowing before you start.</em></h2>
+    <div class="rule reveal"></div>
+    <div class="faq-list reveal">
+      <details>
+        <summary>How is this different from a GLP-1 drug like Ozempic or Wegovy?</summary>
+        <p class="faq-answer">GLP-1 drugs are pharmaceutical receptor agonists — they synthetically mimic a gut hormone via weekly injection, require a prescription, and cost $800–$1,600+ per month. GBX Slim2Fit™ is a dietary supplement that supports your body's own natural fullness hormone, CCK, using a clinically studied potato protein extract called Slendesta®. It's not a drug, doesn't require a prescription, and works with your biology rather than overriding it.* Research confirms CCK and GLP-1 work through comparable pathways on appetite — the difference is how you activate them.*</p>
+      </details>
+      <details>
+        <summary>Do I need a gym or any equipment?</summary>
+        <p class="faq-answer">No. The guide includes a walking program and full YouTube-based bodyweight workouts that require zero equipment. If you do have dumbbells or gym access, there are intermediate and advanced tracks for you too. You choose what fits your actual week — not the week you wish you had.</p>
+      </details>
+      <details>
+        <summary>How do I get the guide after ordering?</summary>
+        <p class="faq-answer">The person who shared this page with you — your brand partner — will personally send you the guide link and your Facebook group invitation once you've ordered. That's the whole point of this model: you get a real human being supporting you, not an automated email sequence.</p>
+      </details>
+      <details>
+        <summary>I've tried everything. Why will this be different?</summary>
+        <p class="faq-answer">Because most programs ask you to fix your habits without addressing your biology, or give you a supplement without a structure to use it inside. This does both simultaneously — GBX Slim2Fit™ supports the biological environment (your CCK satiety signal, your thermogenesis, your gut microbiome), and the guide gives you the framework. And critically, the guide was built for the real version of your life — including what to do when it goes sideways.*</p>
+      </details>
+      <details>
+        <summary>What if I fall off the program midway through?</summary>
+        <p class="faq-answer">Get back on at your next meal. That's the whole philosophy — and it's coached specifically inside the guide. The people who get back on track at the next meal still get results. Progress is never linear, and the guide won't pretend otherwise.</p>
+      </details>
+      <details>
+        <summary>Do I have to give up the food I love?</summary>
+        <p class="faq-answer">No. The macro tracking approach means you can still eat what you enjoy — you simply become more aware of how it fits into your day. This is about information, not deprivation. The guilt goes. The food stays.</p>
+      </details>
+      <details>
+        <summary>Is GBX Slim2Fit™ plant-based and stimulant-free?</summary>
+        <p class="faq-answer">Yes on both. GBX Slim2Fit™ is plant-based with a vegetable capsule, and contains no artificial preservatives, colors, flavors or sweeteners. It is also stimulant-free — unlike many weight management supplements, it doesn't rely on high-caffeine formulas. Slendesta® has been used globally for 15+ years with no reported adverse effects.</p>
+      </details>
+      <details>
+        <summary>Can I take it if I'm pregnant, nursing or on medication?</summary>
+        <p class="faq-answer">Consult your physician before starting any new supplement — particularly if you are pregnant, nursing, have an existing health condition, or are taking prescription medications. GBX Slim2Fit™ is recommended for adults only.</p>
+      </details>
+      <details>
+        <summary>What's a brand partner and who sent me here?</summary>
+        <p class="faq-answer">Amare Global distributes its products through independent wellness advocates called Brand Partners — real people who use the products and share them with their communities. The person who sent you this page is yours. Reach back out to them to order, ask questions, or get your guide. They're not a call centre — they're someone who can actually answer your questions.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="cta">
+  <div class="final-cta-box">
+    <span class="eyebrow">You've read this far for a reason</span>
+    <h2 class="section-title">Eight weeks from now,<br>you'll be <em>glad you started today.</em></h2>
+    <p>Get GBX Slim2Fit™ and receive instant access to the complete 8-week transformation guide ($97/month value — free) — plus your personal invitation to the private accountability group with weekly live training sessions and prizes. Reach out to the person who sent you here to get started.</p>
+    <div class="cta-prompt-dark"><strong>Ready? It's two words.</strong>Get $10 off your first order as a new customer. Reply to the person who sent you this and simply say <em style="color:var(--teal-light);font-style:italic;">"I'm ready."</em><span style="display:block;margin-top:6px;">They'll send you everything — your order link, your 8-week guide, and your group access.</span></div>
+    <div style="text-align:center;">
+      <a href="#" class="bp-order-btn bp-order-btn-dark" target="_blank">Order Slim2Fit™ — $75 first month →</a>
+    </div>
+    <div class="final-trust">
+      <span>🛡️ 90-day money back guarantee</span>
+      <span>📦 Guide delivered immediately after purchase</span>
+      <span>👥 Private group access included</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">GBX <span>Slim2Fit</span> · Julie Haney Gilson</div>
+  <div class="footer-div"></div>
+  <p>* These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. GBX Slim2Fit™ is a dietary supplement and is not a pharmaceutical drug or GLP-1 receptor agonist. Educational comparisons are provided for informational purposes only. Slendesta® is a registered trademark of Kemin Industries, Inc. Capsifen® is a registered trademark of Akay Group. Amare Global products are distributed through independent Brand Partners. Always consult a qualified healthcare professional before beginning any supplement, particularly if you have a medical condition or are taking prescription medication.</p>
+</footer>
+
+<script>
+  // ── NAV SCROLL ──
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── BRAND PARTNER LINK INJECTION ──
+  // Reads ?link= param and wires it into all order buttons
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const orderLink = params.get('link');
+    if (!orderLink) return;
+
+    // Show and wire up all order buttons
+    document.querySelectorAll('.bp-order-btn').forEach(btn => {
+      btn.href = orderLink;
+      btn.style.display = 'inline-flex';
+    });
+
+    // Update nav CTA to go straight to order link
+    const navCta = document.querySelector('.nav-cta');
+    if (navCta) {
+      navCta.href = orderLink;
+      navCta.target = '_blank';
+      navCta.textContent = 'Order now — $75 first month →';
+    }
+  })();
+</script>
+
+</body>
+</html>
